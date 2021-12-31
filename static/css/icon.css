@@ -1,0 +1,7 @@
+#main-header-icon {
+    background: url('/static/resources/logo.png') no-repeat;
+    position: absolute;
+    top: 0;
+    width: 43px;
+    height: 70px;
+}

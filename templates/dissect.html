@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="form-group">
+    <div class="form-group">
+        <input type="text" class="form-control" id="search" placeholder="Search Image Description to get objects">
+    </div>
+</div>
+<div class="text-center">
+    <button type="submit" id="submit_button" class="btn btn-success">Search</button>
+</div>
+
+<br/>
+
+<div class="text-center" id="imageObjectList"></div>
+
+{% endblock %}

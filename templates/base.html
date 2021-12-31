@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Storyweaver</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" media="screen" href ="{{ url_for('static', filename='css/loader_design.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/top_arrow.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/icon.css') }}">
+
+
+    <link rel="shortcut icon" type="image/png" href= "{{ url_for('static', filename='resources/storyweaver.jpeg') }}">
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="." style="color:#fff">
+                <span id="main-header-icon"></span>
+                <span>
+                    <span style="margin-left:50px;height:100%;font-size:150%">
+                              Storyweaver
+                    </span>
+                </span>
+            </a>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header" style="text-align:justify">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h2 class="modal-title">Search & Generate Stories</h2>
+                        <hr/>
+                        Authors and Illustrators often find it difficult to get a starting point for their stories.
+                        They usually scourge through popular websites on the internet and other places to look for inspirations regarding the design and layout of their work.
+                        <b> Storyweaver </b> is an attempt to smoothen this inertia associated with the initial onboarding process. In order to achieve the same we have adopted a three pronged strategy -
+
+                        <br/><br/>
+                        <ul>
+                            <li> Match user story text to closely matching pre-existing illustrations </li>
+                            <li> Dissect the presented storyline/scene into its constituent objects and present such alternate representations </li>
+                            <li> Generate new illustrations (hence the name Storyweaver) from the user given storyline (i.e. the input text) </li>
+                        </ul>
+
+                    </div>
+                    <div class="modal-body">
+
+                        <h2> Approach </h2>
+                        <hr>
+                        Based on the recent advances in deep learning we have leveraged state of the art models like -
+                        <br/>
+                        <ul>
+                            <li> <b> Word2Vec </b> trained on a billion words from Google News Corpus to compare text queries.  </li>
+                            <li> <b> RetinaNet </b> trained on Imagenet to detect objects in the given image. </li>
+                            <li> <b> Self-Attention GAN </b> to generate image from text. </li>
+                        </ul>
+                        <h2> Known Issues </h2>
+                         The weave part doesn't work as of now, because we lack the computational power (in terms of GPU)
+                         to train a GAN. So until we get hold of this, it won't be possible in a finite time-frame.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav">
+                <li><a data-toggle="modal" data-target="#myModal" style="cursor:pointer;">About the App</a></li>
+            </ul>
+            <li><a href="//git.corp.adobe.com/rupachak/" target="_blank" style="padding:10px;"><span><img src="/static/resources/github_mark.png" alt="Git"/></span></a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div id="divLoading" style="display:none"></div>
+
+    <!-- Return to Top -->
+    <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="{{url_for('root')}}">Search</a></li>
+        <li><a  href="{{url_for('dissect')}}">Dissect</a></li>
+        <li><a  href="#">Weave</a></li>
+    </ul>
+    <br><br>
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/back_top_arrow.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/loader.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/highlight_tab.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/visualcontroller.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/typeahead.js') }}"></script>
+
+</html>
